@@ -17,10 +17,63 @@ Route::get('/', function () {
 
 
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+
+/**
+* basic rout
+*/
+
+Route::get('basic', function(){
+	return 'hello world';
+});
+
+Route::get('/names', 'NamesController@index');
+
+/**
+ * response to multiple http response
+ */
+
+Route::match(['get','post'], '/names', 'NamesController@index');
+
+/**
+ * Response to all http requests.
+ */
+
+Route::any('/names', 'NamesController@index');
+
+Route::get('/names', function(){
+	return view('layouts.names');
+});
+
+Route::view('/welcome', 'layouts.index', ['name' => 'Taylor']);
+
+/**
+ * ============ Route parameters ============
+ */
+
+
+
+
+
+/**
+ * ============ named routes ============
+ */
+
+Route::get('name/profile', 'NamesController@index')->name('profile');
+
+
+
+
+
+

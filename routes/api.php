@@ -19,3 +19,5 @@ use Illuminate\Http\Request;
 
 
 Route::resource('/users', 'UserController');
+
+Route::resource('/names', 'NamesController');

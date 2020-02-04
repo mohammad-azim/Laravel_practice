@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use \App\Http\Requests\UserRequest;
-use \App\User;
-class Usercontroller extends Controller
-{
+use App\Http\Requests\NameRequest;
+use App\Name;
 
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
-    
+class NamesController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -19,10 +14,10 @@ class Usercontroller extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $names = Name::all();
         
-
-        return response()->json($users);
+        dd($names);   
+        return view('layouts.index', compact($names));
     }
 
     /**
@@ -32,7 +27,7 @@ class Usercontroller extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -41,11 +36,11 @@ class Usercontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(NameRequest $request)
     {
-        $user = User::create($request->all());
+        $name = Name::create($request->all());
 
-        return $user;
+        return $name;
     }
 
     /**
@@ -56,9 +51,7 @@ class Usercontroller extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-
-        return $user;
+        //
     }
 
     /**
@@ -95,5 +88,3 @@ class Usercontroller extends Controller
         //
     }
 }
-
-
