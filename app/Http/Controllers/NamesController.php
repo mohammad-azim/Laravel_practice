@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\NameRequest;
 use App\Name;
+use Illuminate\Support\Facades\Log;
 
 class NamesController extends Controller
 {
@@ -17,6 +18,7 @@ class NamesController extends Controller
         $names = Name::all();
         
         dd($names);   
+
         return view('layouts.index', compact($names));
     }
 
@@ -49,9 +51,21 @@ class NamesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $message = "this is log message";
+
+        Log::emergency($message);
+        Log::alert($message);
+        Log::critical($message);
+        Log::error($message);
+        Log::warning($message);
+        Log::notice($message);
+        Log::info($message);
+        Log::debug($message);
+
+        return 'HELLOW WORLD';
+
     }
 
     /**

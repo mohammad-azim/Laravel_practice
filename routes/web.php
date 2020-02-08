@@ -17,17 +17,17 @@ Route::get('/', function () {
 
 
 
-// Auth::routes();
+Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
-// Auth::routes();
+Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
-// Auth::routes();
+Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 /**
@@ -50,20 +50,33 @@ Route::match(['get','post'], '/names', 'NamesController@index');
  * Response to all http requests.
  */
 
-Route::any('/names', 'NamesController@index');
+// Route::any('/names', 'NamesController@index');
 
-Route::get('/names', function(){
-	return view('layouts.names');
-});
 
-Route::view('/welcome', 'layouts.index', ['name' => 'Taylor']);
+// Route::get('/names', function(){
+// 	return view('layouts.names');
+// });
+
+// Route::view('/welcome', 'layouts.index', ['name' => 'Taylor']);
 
 /**
  * ============ Route parameters ============
  */
 
+Route::get('ab', function(){
+	return response('hello world', 200)->header('Content-Type', 'text/plain');;
+});
 
-
+/**
+ * Json response
+ */
+Route::get('abc', function(){
+	// return [1,2,3,4];
+	return response()->json([
+		'name'=> 'mohammad azim',
+		'last_name' => 'sakhizadah'
+	]);
+});
 
 
 /**
@@ -73,7 +86,4 @@ Route::view('/welcome', 'layouts.index', ['name' => 'Taylor']);
 Route::get('name/profile', 'NamesController@index')->name('profile');
 
 
-
-
-
-
+Route::get('/show', 'NamesController@show');
