@@ -37,6 +37,13 @@ class TestController extends Controller
      */
     public function store(TestRequest $request)
     {
+        $validatedData = $request->validate([
+
+        'title' => 'required|unique:tests|max:2',
+
+        'text' => 'required',
+    ]);
+
         $test = Test::create($request->all());
 
         return $test;

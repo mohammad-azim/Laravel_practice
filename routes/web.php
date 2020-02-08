@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/layout', function () {
+    return view('layouts.content');
+});
+
+
+Route::get('/child', function () {
+    return view('layouts.child');
+});
+
 
 
 Auth::routes();
