@@ -87,3 +87,6 @@ Route::get('name/profile', 'NamesController@index')->name('profile');
 
 
 Route::get('/show', 'NamesController@show');
+
+
+Route::resource('test', 'TestController');
