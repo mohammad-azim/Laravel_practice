@@ -61,9 +61,11 @@ class MemolistController extends Controller
      * @param  \App\Memolist  $memolist
      * @return \Illuminate\Http\Response
      */
-    public function edit(Memolist $memolist)
+    public function edit($id)
     {
-        //
+        $list = Memolist::find($id);
+        
+        return view('layouts.edit',compact("list"));
     }
 
     /**
@@ -73,9 +75,13 @@ class MemolistController extends Controller
      * @param  \App\Memolist  $memolist
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Memolist $memolist)
+    public function update(Request $request, $id)
     {
-        //
+        $list = Memolist::find($id);
+        
+        $list->update($request->all());
+
+        return redirect("lists"); 
     }
 
     /**
@@ -84,8 +90,12 @@ class MemolistController extends Controller
      * @param  \App\Memolist  $memolist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Memolist $memolist)
+    public function destroy($id)
     {
-        //
+        $list = Memolist::find($id);
+
+        $list->delete();
+
+        return back();
     }
 }

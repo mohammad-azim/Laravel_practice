@@ -16,13 +16,19 @@
 					    <tr>
 					      <th scope="col">#</th>
 					      <th scope="col">name</th>
+					      <th scope="col">actoins</th>
 					    </tr>
 					  </thead>
+
 					  <tbody>
 					  	@foreach ($lists as $list)
 					    <tr>
 					      <th scope="row">{{$list->id}}</th>
 					      <td>{{$list->name}}</td>
+					      <td>
+					      	<a href="/lists/{{$list->id}}/destroy">Delete</a>
+					      	<a href="/lists/{{$list->id}}/edit" style="padding-left: 30px;">Edit</a>
+					      </td>
 					    </tr>
 					    @endforeach
 					  </tbody>

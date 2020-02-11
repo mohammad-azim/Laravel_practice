@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::resource('/lists','MemolistController');
 
+Route::get("/lists/{id}/destroy","MemolistController@destroy");
+
+
 
 
 // Route::get('/layout', function () {
