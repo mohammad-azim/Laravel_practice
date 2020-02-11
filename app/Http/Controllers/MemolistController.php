@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class MemolistController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -78,7 +83,7 @@ class MemolistController extends Controller
     public function update(Request $request, $id)
     {
         $list = Memolist::find($id);
-        
+
         $list->update($request->all());
 
         return redirect("lists"); 
