@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Memolist;
+use App\Sublist;
 use Illuminate\Http\Request;
 
-class MemolistController extends Controller
+class SublistController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +14,6 @@ class MemolistController extends Controller
      */
     public function index()
     {
-        $lists = Memolist::all();
-
-        return view('layouts.list', compact('lists'));   
     }
 
     /**
@@ -29,9 +21,9 @@ class MemolistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('layouts.create');
+        return view('layouts.sublistcreate',compact("id"));
     }
 
     /**
@@ -42,64 +34,68 @@ class MemolistController extends Controller
      */
     public function store(Request $request)
     {
-        $list = Memolist::create($request->all());
+       // dd($request->all());
+        $sublists = Sublist::create($request->all());
 
-        if($list){
-            return redirect("/lists");
+        if($sublists){
+
+            return redirect("/sublists/".$request->memolist_id);
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Memolist  $memolist
+     * @param  \App\Sublist  $sublist
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         
+        $sublists = Sublist::where("memolist_id",$id)->get();
+        return view('layouts.sublist', compact('sublists',"id"));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Memolist  $memolist
+     * @param  \App\Sublist  $sublist
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $list = Memolist::find($id);
+        $sublist = Sublist::find($id);
         
-        return view('layouts.edit',compact("list"));
+        return view('layouts.sublistedit',compact("sublist"));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Memolist  $memolist
+     * @param  \App\Sublist  $sublist
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $list = Memolist::find($id);
+        $sublist = Sublist::find($id);
 
-        $list->update($request->all());
+        $sublist->update($request->all());
 
-        return redirect("lists"); 
+        return redirect("sublists"); 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Memolist  $memolist
+     * @param  \App\Sublist  $sublist
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $list = Memolist::find($id);
+        $sublist = Sublist::find($id);
 
-        $list->delete();
+        $sublist->delete();
 
         return back();
     }
