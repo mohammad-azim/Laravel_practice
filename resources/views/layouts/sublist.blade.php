@@ -32,8 +32,8 @@
 					      <td>{{$list->created_at}}</td>
 					      <td>{{$list->priority}}</td>
 					      <td>
-					      	<a href="/sublists/{{$list->id}}/destroy">Delete</a>
-					      	<a href="/sublists/{{$list->id}}/edit">Edit</a>
+					      	<a href="#" onclick="deleteList('{{$list->id}}')" class="btn btn-danger">Delete</a>
+					      	<a href="/sublists/{{$list->id}}/edit" class="btn btn-primary">Edit</a>
 					      </td>
 					    </tr>
 					    @endforeach
@@ -45,4 +45,13 @@
         </div>
     </div>
 </div>
+
+<!-- script -->
+<script>
+function deleteList(id) {
+	if(confirm("Are you sure to delete?")){
+		window.location.href="/sublists/"+id+"/destroy";
+	}
+}
+</script>
 @endsection

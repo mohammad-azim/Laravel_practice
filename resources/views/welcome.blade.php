@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Login to your memoes
+                    <img src="/welcomepage.png">
                 </div>
             </div>
         </div>

@@ -10,12 +10,11 @@
 		  @foreach($lists as $list)
 		  <div class="col-sm-4" style="margin-top: 5px;">
 		    <div class="card">
-		      	<div class="card-body text-center" style="max-height: 100px; min-height: 100px;">
-		        	<h2 class="card-title"><a href="/sublists/{{$list->id}}">{{$list->name}}</a></h2>
-
+		      	<div class="card-body text-center" style=" background-color:#fff; max-height: 120px; min-height: 120px;">
+		        	<h1 class="card-title" style="margin-top: 20px;"><a href="/sublists/{{$list->id}}">{{$list->name}}</a></h1>
 		      	</div>
 		      	<div class="card-header text-center">
-	      			<a href="/lists/{{$list->id}}/destroy" class="btn btn-primary">Delete</a>
+	      			<a href="#" onclick="deleteList('{{$list->id}}')" class="btn btn-danger">Delete</a>
 					<a href="/lists/{{$list->id}}/edit" class="btn btn-primary">Edit</a>
 				</div>
 		    </div>
@@ -23,4 +22,12 @@
 		  @endforeach
 		</div>
 </div>
+<!-- js -->
+<script>
+function deleteList(id) {
+	if(confirm("Are you sure to delete?")){
+		window.location.href="/lists/"+id+"/destroy";
+	}
+}
+</script>
 @endsection
