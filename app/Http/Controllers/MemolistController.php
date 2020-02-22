@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Memolist;
-use Illuminate\Http\Request;
+use App\Http\Requests\MemoRequest;
 
 class MemolistController extends Controller
 {
@@ -40,11 +40,12 @@ class MemolistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MemoRequest $request)
     {
         $list = Memolist::create($request->all());
 
         if($list){
+
             return redirect("/lists");
         }
     }

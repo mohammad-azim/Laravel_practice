@@ -38,7 +38,7 @@ class SublistController extends Controller
      */
     public function store(Request $request)
     {
-       // dd($request->all());
+       
         $sublists = Sublist::create($request->all());
 
         if($sublists){
@@ -102,5 +102,14 @@ class SublistController extends Controller
         $sublist->delete();
 
         return back();
+    }
+
+    public function changeStatus($id)
+    {
+        $sublist = Sublist::find($id);
+        $sublist->status = "1";
+        if($sublist->save()){
+            return back();
+        }
     }
 }

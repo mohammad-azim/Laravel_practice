@@ -28,3 +28,5 @@ Route::get("/sublists/{id}/destroy","SublistController@destroy");
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get("/changeStatus/{id}","SublistController@changeStatus");

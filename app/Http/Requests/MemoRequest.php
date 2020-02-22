@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NameRequest extends FormRequest
+class MemoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,6 @@ class NameRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:200',
-            'last_name' => 'required|min:3|max:200',  
         ];
     }
 }

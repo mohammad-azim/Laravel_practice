@@ -23,6 +23,7 @@ class CreateSublistsTable extends Migration
             $table->foreign('memolist_id')
                   ->references('id')->on('memolists')
                   ->onDelete('cascade');
+            $table->integer('status')->default(0);
         });
     }
 

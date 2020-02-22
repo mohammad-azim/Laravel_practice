@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="card-header">
     LIST PAGE
-     <a href="/lists/create" class="btn btn-primary btn-sm float-right">New List</a>
+     <a href="/lists/create" class="btn btn-primary btn-sm float-right @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>New List</a>
 	</div>
 	   <div class="row" style="margin-top: 5px;">
 		  @foreach($lists as $list)
