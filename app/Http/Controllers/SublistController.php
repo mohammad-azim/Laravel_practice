@@ -55,7 +55,6 @@ class SublistController extends Controller
      */
     public function show($id)
     {
-        
         $sublists = Sublist::where("memolist_id",$id)->get();
         return view('layouts.sublist', compact('sublists',"id"));
     }
@@ -86,7 +85,7 @@ class SublistController extends Controller
 
         $sublist->update($request->all());
 
-        return redirect("sublists"); 
+        return redirect('sublists'); 
     }
 
     /**
