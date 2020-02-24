@@ -32,7 +32,12 @@
 					      <td>
 					      	<a href="#" onclick="deleteList('{{$list->id}}')" class="btn btn-danger">Delete</a>
 					      	<a href="/sublists/{{$list->id}}/edit" class="btn btn-primary">Edit</a>
-					      	<a href="#" onclick="workdone('{{$list->id}}')" class="btn btn-success">work done</a>
+					      	@if($list->status==1)
+					      	<a href="#" onclick="undone('{{$list->id}}')" class="btn btn-success">  done! </a>@else 
+					      	<a href="#" onclick="workdone('{{$list->id}}')" class="btn btn-success">
+					      	work done
+					      	@endif
+					      	</a>
 					      </td>
 					    </tr>
 					    @endforeach

@@ -38,6 +38,12 @@ class SublistController extends Controller
      */
     public function store(Request $request)
     {
+         $validatedData = $request->validate([
+
+            'name' => 'required|min:3|max:200',
+            'details' => 'required|min:3|max:200',
+            'priority' => 'required',
+        ]);
        
         $sublists = Sublist::create($request->all());
 

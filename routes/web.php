@@ -11,7 +11,10 @@
 |
 */
 
+
 Route::get('/', function () {
+	App::setlocale('en');
+
     return view('welcome');
 });
 
@@ -20,10 +23,10 @@ Route::resource('/lists','MemolistController');
 Route::get("/lists/{id}/destroy","MemolistController@destroy");
 
 Route::resource('/sublists','SublistController');
+
 Route::get("/sublists/create/{id}","SublistController@create");
 
 Route::get("/sublists/{id}/destroy","SublistController@destroy");
-
 
 Auth::routes();
 

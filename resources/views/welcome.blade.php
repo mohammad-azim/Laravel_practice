@@ -80,6 +80,7 @@
             @endif
 
             <div class="content">
+                {{__('text.welcome')}}
                 <div class="title m-b-md">
                     <img src="/welcomepage.png">
                 </div>

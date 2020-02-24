@@ -12,8 +12,12 @@
                     <input type="text" name="name" value="{{$sublist->name}}" class="form-control" placeholder="Name">
                     <lable>details</lable>
                     <input type="text" name="details" value="{{$sublist->details}}" class="form-control" placeholder="details">
-                    <lable>priority</lable>
-                    <input type="text" name="priority" value="{{$sublist->priority}}" class="form-control" placeholder="priority">
+                    <label>priority</label>
+                        <select name="priority" class="form-control" style="width:250px">
+                            <option value="High">High</option>
+                            <option value="Mediam">Mediam</option>
+                            <option value="Low">Low</option>
+                        </select>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-right">
