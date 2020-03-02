@@ -33,3 +33,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get("/changeStatus/{id}","SublistController@changeStatus");
+
+// mailtrap route
+
+Route::get('test-mail', 'TestMailController@TestMail');

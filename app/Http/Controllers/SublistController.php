@@ -62,6 +62,7 @@ class SublistController extends Controller
     public function show($id)
     {
         $sublists = Sublist::where("memolist_id",$id)->get();
+
         return view('layouts.sublist', compact('sublists',"id"));
     }
 
@@ -112,8 +113,11 @@ class SublistController extends Controller
     public function changeStatus($id)
     {
         $sublist = Sublist::find($id);
+
         $sublist->status = "1";
+
         if($sublist->save()){
+
             return back();
         }
     }
