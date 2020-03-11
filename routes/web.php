@@ -14,7 +14,6 @@
 
 Route::get('/', function () {
 	App::setlocale('en');
-
     return view('welcome');
 });
 
@@ -37,3 +36,13 @@ Route::get("/changeStatus/{id}","SublistController@changeStatus");
 // mailtrap route
 
 Route::get('test-mail', 'TestMailController@TestMail');
+
+// file uploading 
+
+Route::get('uploadfile', 'HomeController@showfilepage');
+
+// 
+
+Route::post('uploadfile', 'HomeController@uploadfile');
+
+

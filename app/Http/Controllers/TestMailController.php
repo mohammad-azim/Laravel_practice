@@ -10,8 +10,8 @@ class TestMailController extends Controller
 {
     public function TestMail()
     {
-    	$name = 'Krunal';
-	    Mail::to('krunal@appdividend.com')->send(new Test($name)); 
-	    return 'Email was sent';
+    	$name = 'hussain';
+	    Mail::to('hussain@email.com')->send(new Test($name)); 
+	    return 'Email was sent! please check your mailtrap inbox';
     }
 }

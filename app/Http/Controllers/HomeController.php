@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UploadRequest;
+
 
 class HomeController extends Controller
 {
@@ -24,5 +28,20 @@ class HomeController extends Controller
     public function index()
     {
         return view('layouts.list');
+    }
+
+    /**
+     * get store image
+     */
+    public function showfilepage(Request $request)
+    {
+        return view('/uploadfile');
+    }
+
+    public function uploadfile(UploadRequest $request)
+    {
+        $path = Storage::putFile('public\users', $request->file('image'));
+
+        return $path;
     }
 }

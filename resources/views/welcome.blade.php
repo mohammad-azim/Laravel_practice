@@ -80,11 +80,21 @@
             @endif
 
             <div class="content">
-                {{__('text.welcome')}}
+                <!-- {{__('text.welcome')}} -->
                 <div class="title m-b-md">
                     <img src="/welcomepage.png">
                 </div>
-            </div>
+
+                <div class="links">
+                    <a href="/uploadfile">upload file</a>
+                    <a href="test-mail">Mailtrap</a>
+                    <a href="https://laravel-news.com">News</a>
+                    <a href="https://blog.laravel.com">Blog</a>
+                    <a href="https://nova.laravel.com">Nova</a>
+                    <a href="https://forge.laravel.com">Forge</a>
+                    <a href="https://vapor.laravel.com">Vapor</a>
+                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                </div>
         </div>
     </body>
 </html>

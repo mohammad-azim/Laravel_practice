@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MemoRequest extends FormRequest
+class UploadRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,6 @@ class MemoRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:200',
-            'image' => 'nullable|size:100',
         ];
     }
 }
