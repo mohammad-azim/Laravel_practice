@@ -46,3 +46,7 @@ Route::get('uploadfile', 'HomeController@showfilepage');
 Route::post('uploadfile', 'HomeController@uploadfile');
 
 
+// design blade for tailwind 
+Route::get('design', function(){
+	return view('/design');
+});
