@@ -18,10 +18,10 @@ use Illuminate\Http\Request;
 // });
 
 
-Route::resource('/users', 'UserController');
+Route::resource('city', 'CityController');
 
-Route::resource('/names', 'NamesController');
+Route::get('city/{id}', 'CityController@show');
 
-Route::resource('/lists', 'MemolistController');
+Route::resource('file','FileUpploadController');
 
 

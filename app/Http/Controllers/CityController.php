@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use \App\Http\Requests\UserRequest;
-use \App\User;
-class Usercontroller extends Controller
-{
+use Illuminate\Http\Request;
+use App\City;
 
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
-    
+class CityController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +14,9 @@ class Usercontroller extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        
-        return response()->json($users);
+        $names = City::paginate(20);
+
+        return $names;
     }
 
     /**
@@ -31,7 +26,7 @@ class Usercontroller extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -40,11 +35,11 @@ class Usercontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        $user = User::create($request->all());
+        $names = City::create($request->all());
 
-        return $user;
+        return $names;
     }
 
     /**
@@ -55,9 +50,11 @@ class Usercontroller extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-
-        return $user;
+        $city = City::find($id);
+        if (is_null($city)) {
+            return response()->json(['message'=>'record not found!'],204);
+        }
+        return response()->json($city, 200);
     }
 
     /**
@@ -68,7 +65,7 @@ class Usercontroller extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -78,9 +75,11 @@ class Usercontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, City $city)
     {
-        //
+        $city->update($request->all());
+
+        return response()->json($city, 200);   
     }
 
     /**
@@ -89,10 +88,10 @@ class Usercontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, City $city)
     {
-        //
+        $city->delete();
+
+        return response()->json($city, 204);  
     }
 }
-
-

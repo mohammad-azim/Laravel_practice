@@ -50,3 +50,7 @@ Route::post('uploadfile', 'HomeController@uploadfile');
 Route::get('design', function(){
 	return view('/design');
 });
+
+// tailwindcss
+
+Route::get('tailwindcss', 'HomeController@tailwindcsspage');

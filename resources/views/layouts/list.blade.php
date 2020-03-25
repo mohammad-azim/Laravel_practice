@@ -15,7 +15,7 @@
 		      	</div>
 		      	<div class="card-header text-center">
 	      			<a href="#" onclick="deleteList('{{$list->id}}')" class="btn btn-danger">Delete</a>
-					<a href="/lists/{{$list->id}}/edit" class="btn btn-primary">Edit</a>
+					<a href="/lists/{{$list->id}}/edit" class="btn ">Edit</a>
 				</div>
 		    </div>
 		  </div>

@@ -2,16 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use \App\Http\Requests\UserRequest;
-use \App\User;
-class Usercontroller extends Controller
-{
+use Illuminate\Http\Request;
 
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
-    
+class FileUpploadController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +13,7 @@ class Usercontroller extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        
-        return response()->json($users);
+        return response()->download(public_path('userimage.jpg', 'welcome image'));
     }
 
     /**
@@ -31,7 +23,7 @@ class Usercontroller extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -40,11 +32,16 @@ class Usercontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        $user = User::create($request->all());
+        $filename = 'userimage.jpg';
 
-        return $user;
+        $path = $request->file('photo')->move(public_path("/"),$filename);
+
+        $photoURL = url('/'.$filename);
+
+        return response()->json(['url'=>$photoURL], 200);
+
     }
 
     /**
@@ -55,9 +52,7 @@ class Usercontroller extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-
-        return $user;
+        //
     }
 
     /**
@@ -94,5 +89,3 @@ class Usercontroller extends Controller
         //
     }
 }
-
-

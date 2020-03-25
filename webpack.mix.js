@@ -21,3 +21,5 @@ mix.sass('resources/sass/app.scss', 'public/css')
       processCssUrls: false,
       postCss: [ tailwindcss('tailwind.config.js') ],
 })
+
+mix.browserSync('127.0.0.1:8000');

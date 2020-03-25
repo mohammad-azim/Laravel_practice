@@ -2,7 +2,9 @@ module.exports = {
   theme: {
     extend: {},
   },
-  variants: {},
+  variants: {
+  	fontStyle: ['responsive', 'hover', 'focus'],
+  },
   plugins: [
   	require('tailwindcss'),
     require('autoprefixer'),

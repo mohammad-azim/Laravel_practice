@@ -44,4 +44,9 @@ class HomeController extends Controller
 
         return $path;
     }
+
+    public function tailwindcsspage()
+    {
+        return view('/tailwindcss.tailwind');
+    }
 }
