@@ -1,12 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\City;
 
 class CityController extends Controller
 {
+
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        $names = City::paginate(20);
+        $names = City::all();
 
         return $names;
     }
@@ -37,6 +41,7 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
+        
         $names = City::create($request->all());
 
         return $names;
@@ -51,9 +56,7 @@ class CityController extends Controller
     public function show($id)
     {
         $city = City::find($id);
-        if (is_null($city)) {
-            return response()->json(['message'=>'record not found!'],204);
-        }
+        
         return response()->json($city, 200);
     }
 

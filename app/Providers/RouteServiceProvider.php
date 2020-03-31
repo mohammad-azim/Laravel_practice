@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider

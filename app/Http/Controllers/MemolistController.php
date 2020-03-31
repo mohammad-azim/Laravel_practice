@@ -20,6 +20,8 @@ class MemolistController extends Controller
     public function index()
     {
         $lists = Memolist::all();
+        
+        // $lists = Memolist::paginate(3);
 
         return view('layouts.list', compact('lists'));   
     }

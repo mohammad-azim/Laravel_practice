@@ -41,7 +41,6 @@ class FileUpploadController extends Controller
         $photoURL = url('/'.$filename);
 
         return response()->json(['url'=>$photoURL], 200);
-
     }
 
     /**

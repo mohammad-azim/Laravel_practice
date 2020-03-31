@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+use App\Http\Resources\UserCollection;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,15 +15,25 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+
+Route::group(['middleware'=>'auth:api'], function(){
+
+	// Route::resource('city', 'CityController');
+
+});
+
+	Route::resource('city', 'CityController');
 
 
-Route::resource('city', 'CityController');
+Route::get('/user', function(){
+
+	return new UserCollection(User::all());
+
+});
+
 
 Route::get('city/{id}', 'CityController@show');
 
+// file upload via api
+
 Route::resource('file','FileUpploadController');
-
-

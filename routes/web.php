@@ -1,5 +1,6 @@
 <?php
-
+use App\User;
+use App\Http\Resources\User as UserResource;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,12 +11,21 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Api resources 
 
+Route::get('/json', function () {
+	$user = User::find(1);
+    return new UserResource($user);
+});
+
+// localization 
 
 Route::get('/', function () {
 	App::setlocale('en');
     return view('welcome');
 });
+
+// list of memo app routes
 
 Route::resource('/lists','MemolistController');
 
@@ -41,8 +51,6 @@ Route::get('test-mail', 'TestMailController@TestMail');
 
 Route::get('uploadfile', 'HomeController@showfilepage');
 
-// 
-
 Route::post('uploadfile', 'HomeController@uploadfile');
 
 
@@ -54,3 +62,19 @@ Route::get('design', function(){
 // tailwindcss
 
 Route::get('tailwindcss', 'HomeController@tailwindcsspage');
+
+
+// Query builder
+
+Route::get('Query', 'HomeController@QueryBuilder');
+
+
+// Pdf generate
+
+Route::get('/pdf', 'HomeController@downloadPDF');
+
+// excel exporting and importing
+
+Route::get('export', 'DemoController@export')->name('export');
+Route::get('importExportView', 'DemoController@importExportView');
+Route::post('import', 'DemoController@import')->name('import');
