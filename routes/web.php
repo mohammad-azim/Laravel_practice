@@ -68,13 +68,26 @@ Route::get('tailwindcss', 'HomeController@tailwindcsspage');
 
 Route::get('Query', 'HomeController@QueryBuilder');
 
-
-// Pdf generate
+/**
+ * Load pdf file...
+ *
+ * to change to pdf use this package barryvdh/laravel-dompdf
+ *
+ */	
 
 Route::get('/pdf', 'HomeController@downloadPDF');
 
-// excel exporting and importing
+//  view composer..
+Route::get('chanels', 'ChanelController@index');
+Route::get('posts/create', 'PostControlle@create');
 
-Route::get('export', 'DemoController@export')->name('export');
-Route::get('importExportView', 'DemoController@importExportView');
-Route::post('import', 'DemoController@import')->name('import');
+/**
+ * polymorphic relationships
+ * one - one
+ * one - many
+ * many - many
+ */
+
+// noficication route
+
+Route::get('notify', 'NotificationController@store');

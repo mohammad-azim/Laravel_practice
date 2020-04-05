@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UploadRequest;
 use Illuminate\Support\Facades\DB;
 use App;
+use App\User;
 
 
 class HomeController extends Controller
@@ -76,8 +77,12 @@ class HomeController extends Controller
 
     public function downloadPDF()
     {  
+        // get users form DB
+        $user = User::all();
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML('<h1>WELCOME OT PDF GENERATOR PAGE</h1>');
+        // $pdf->loadHTML($user);
+        $pdf->loadView('welcome');
+        // $pdf->loadHTML('<h1>Welcome to PDF‌ generator page.</h1>');
         return $pdf->stream();
 
     }

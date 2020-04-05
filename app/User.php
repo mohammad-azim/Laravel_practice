@@ -6,15 +6,15 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
-
-
+use App\Notifications\InvoicePaid;
 
 
 class User extends Authenticatable
 {
     use Notifiable, HasApiTokens;
 
+
+    // $user->notify(new InvoicePaid($invoice));
     /**
      * The attributes that are mass assignable.
      *
@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function image()
+    {   
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }
